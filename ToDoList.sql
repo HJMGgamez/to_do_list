@@ -5,7 +5,16 @@ DROP TABLE IF EXISTS `list`;
 CREATE TABLE IF NOT EXISTS `list` (
 	`list_id` int(11) NOT NULL AUTO_INCREMENT,
 	`list_name` varchar(50) DEFAULT NULL,
-	`title` varchar(50) DEFAULT NULL,
-	`description` text(8000000000) DEFAULT NULL,
-	PRIMARY KEY (`Anime_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+	PRIMARY KEY (`list_id`)
+);
+
+
+DROP TABLE IF EXISTS `list_entry`;
+CREATE TABLE IF NOT EXISTS `list_entry` (
+	`entry_id` int(11) NOT NULL AUTO_INCREMENT,
+	`list_id` int(11) DEFAULT NULL,
+	`text` text,
+	`status` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`entry_id`),
+  FOREIGN KEY (`list_id`) REFERENCES `list`(`list_id`)
+);
